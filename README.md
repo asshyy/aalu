@@ -4,11 +4,11 @@ Dated - 16 th of june 2020
 The Project Work On Data Analysis based on the profiling of yelp data sheet 
 
 
-In the first part of the assignment u will be taken into the fact that you ask certain queries and answer them as per yur choice profiling
+In the first part of the assignment u will be taken into the fact that you ask certain queries and answer them as per your choice profiling
 and understanding as a data scientist what should be te proper coding and manifestation of what actually needs to be worked out in the most appropriate terms and in the most optimistc way ....
 
 
-In the second part of the assignment we will be able to analysis the dataset use the dataset in proper formatting amd commenting on the 
+In the second part of the assignment we will be able to analysis the dataset , use the dataset in proper formatting and commenting on the 
 worksheet using the appropriate text editor be it subime or any one of those with proper indentation which needs to be taken care of......
 
 
