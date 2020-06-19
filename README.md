@@ -30,4 +30,86 @@ worksheet using the appropriate text editor be it subime or any one of those wit
     10.     tip table=10000
     11.  user table=10000
              
+2.    List the cities with most reviews in ascending ordr:
+
+ Sql code used to arrive at it are :
+     SELECT city,
+               SUM(review_count)AS reviews
+     FROM business
+     GOUP BY city
+     ORDER BY reviews DESC
+     
+    The results are as listed :(Witten only first 5 for reference)
+    
+         city               review
+         Las Vegas          82854
+         Phoenix            34503
+         Toronto            24113
+         Scottsdale         20164
+         Charlotte          12523
+         
+  Part 2: Inferences & analysis
+  Group business based on the ones that are open andthe ones that are closed.What differences can you find between the ones that are still open and the ones that are closed? list at least 2 diffrences and the sql code toarrive at ur answer .
+  
+  
+  1. Difference 1:
+  
+     The business that are open tend to have more reviews than ones that are closed on average.
+         Open: AVG(review_count)=31.757
+         Closd:AVG(review_count)=23.198
+         
+  2. Difference 2:
+  
+     The average star rating is higher for usiness that are open than business that are closed..
+     
+     Open: AVG(stars)=3.679
+     Closed:AVG(srars)=3.520
+     
+     Sql code for analyis :
+     SELECT COUNT(DISTINCT(id)),
+           AVG(review_count),
+           SUM(revew_count),
+           AVG(stars),
+           is_open
+     FROM business
+     GROUP BY is_open
+     
+     
+Part 3:For the last part of the yelp data analysis to check whether a business should be open or close
+
+1. In this case we will examine a business should be open or close.
+
 2.
+  in this part we will see the location what are the factors which come into existence, the city the state, postal_code,and address to make processing easier later on also i need t clarifty that is_open clarify business i open and which business have closed(not hours)bt permanently.
+  
+  
+  
+3. Considering the output of the yelp data set: (As a sample taken)
+name                       address                             city         
+Flaming Kitchen            3235 York Regional Road             Markham
+Freeman's Car Stereo       4831 Suth Blvd                     Charlotte
+
+SELECT B.id,
+           B.name,
+           B.address,
+           B.city,
+           B.state,
+           B.postal_code,
+           B.latitude,
+           B.review_count,
+           B.stars,
+           MAX(CASE
+           WHEN H.hours LIKE"%monday%" THEN TRIM(H.hours,'%TuesWednesThursFriSatSun|%')
+           END) AS monday_hours,
+           GROUP_CONCAT(DISTINCT(CCategory))AS categories,
+           GROUP_CONCAT(DISTINCT(A.name) AS attributes,
+           B.is_open
+     FROM business B
+     INNER JOIN hours H
+     On B.id=H.business_id
+     INNER JIN category C 
+     On B.id=C.business_id
+     INNER JOIN attribute A
+     ON B.id=A.business_id
+     GROUP BY B.id
+ 
